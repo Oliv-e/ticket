@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% block title %} TicAT {% endblock title %}
+
+{% block content %}
+<section class="about">
+    <div class="container">
+      <div class="section-title">
+        <br>
+        {% if user.is_authenticated %}
+          Hi {{ user.username }}!
+          <a href="{% url 'logout' %}" class="text-decoration-none">Log Out</a>
+        {% else %}
+          <p>You are not logged in <a href="{% url 'login' %}" style="text-decoration: none;">Log In</a></p>
+        {% endif %}
+        <h2>MENCARI EVENT?</h2>
+        <div class="bg-warning border rounded-3 pt-3 ps-3">
+          <p class="fst-italic">Website ini masih prototype!</p>
+        </div>
+      </div>
+        <br>
+      <div class="row">
+        <div class="col-lg-6">
+          {% load static %}
+          <img src="{% static 'img/event2.jpg' %}" class="img-fluid" alt="">
+        </div>
+        <div class="col-lg-6 pt-4 pt-lg-0 content">
+          <h3>Pesan Tiket Menjadi Lebih <strong>Gampang</strong></h3>
+          <p>TicAT adalah website yang dapat anda gunakan untuk mencari informasi terkait acara umum di sekitar anda{% if user.is_authenticated %}.{% else %}, silahkan <a href="" style="text-decoration: none;">masuk</a> terlebih dahulu untuk mendapatkan informasi yang menarik!{% endif %}</p>
+          <p class="fst-italic">
+            Pesan tiket acara yang tersedia cukup masuk atau daftar agar bisa melakukan pembelian. Disini juga bisa melakukan pembayaran via apapun.
+          </p>
+          <p>
+            Anda ingin menambahkan acara anda? hubungi Adira <a href="" style="text-decoration: none;">disini</a>.
+          </p>
+
+          <!-- <div class="skills-content">
+
+            <div class="progress">
+              <span class="skill">HTML <i class="val">100%</i></span>
+              <div class="progress-bar-wrap">
+                <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </div>
+
+            <div class="progress">
+              <span class="skill">CSS <i class="val">90%</i></span>
+              <div class="progress-bar-wrap">
+                <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </div>
+
+            <div class="progress">
+              <span class="skill">JavaScript <i class="val">75%</i></span>
+              <div class="progress-bar-wrap">
+                <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </div>
+
+            <div class="progress">
+              <span class="skill">Photoshop <i class="val">55%</i></span>
+              <div class="progress-bar-wrap">
+                <div class="progress-bar" role="progressbar" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </div>
+
+          </div> -->
+
+        </div>
+      </div>
+
+    </div>
+  </section><!-- End About Us Section -->
+{% endblock content %}

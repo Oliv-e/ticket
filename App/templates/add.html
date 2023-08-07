@@ -1,0 +1,52 @@
+{%extends 'base.html'%}
+{% block active2 %} active {% endblock active2 %}
+{%block content%}
+<br>
+<br>
+<br>
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-12 col-lg-9 col-xl-7">
+            <div class="card">
+                <div class="card-body p-4 p-md-5">
+                    <a class="btn btn-primary mb-4" href="{% url 'data_eo' %}"><i class="fas fa-chevron-left"></i> Back</a>
+                    <h3 class="mb-4 pb-2">Tambah Event Organizer</h3>
+                    <form {% block actions %} action="/add_eventorganizer" {% endblock actions %} method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {%block value-id%}{%endblock value-id%}
+                        <div class="mb-4">
+                            <div class="form-outline">
+                                <input type="text" class="form-control" name="name" maxlength="50" required {%block value-name%}{%endblock value-name%}/>
+                                <label class="form-label" for="name">Nama Event Organizer</label>   
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <div class="form-outline">
+                                <input type="text" class="form-control" name="address" maxlength="100" required {%block value-address%}{%endblock value-address%}/>
+                                <label class="form-label" for="address">Alamat</label>
+                            </div>
+                        </div>
+                  <div class="row">
+                    <div class="col-md-6 mb-4">
+                      <div class="form-outline">
+                        <input type="email" class="form-control" name="email" required {%block value-email%}{%endblock value-email%}/>
+                        <label class="form-label" for="email">Email</label>
+                      </div>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                      <div class="form-outline">
+                        <input type="tel" id="phoneNumber" class="form-control" name="telp" maxlength="20" required {%block value-telp%}{%endblock value-telp%}/>
+                        <label class="form-label" for="telp">Nomor Handphone</label>
+                      </div>
+                    </div>
+                  </div>
+                    <button class="btn btn-success" type="submit">
+                        {%block btn-action%} <i class="fas fa-plus"></i> Event Organizer {%endblock btn-action%}
+                    </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+</div>
+{%endblock content%}

@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block title %} APALO {% endblock title %}
+{% block active2 %} active {% endblock active2 %}
+{% block content %}
+<div class="container-fluid">
+    <br><br>
+    <div class="row">
+        {% if user.is_superuser %}
+        <div class="col-4">
+            <a class="btn btn-success" href="{% url 'add_eo'%}"><i class="fas fa-plus"></i> Event Organizer</a>
+        </div>
+        {% else %}
+        <div class="col-4"></div>
+        {% endif %}
+        <div class="col-4"></div>
+        <div class="col-1"></div>
+        <div class="col-3 d-flex">
+            <input class="form-control me-2" type="text" placeholder="Cari" id="cari">
+            <a href="{% url 'data_eo' %}" class="btn btn-primary"><i class="fas fa-sync-alt"></i></a>
+        </div>
+    </div>
+    <br><br>
+
+    <table class="table table-striped table-hover table-bordered" id="myTable">
+        <thead>
+            <tr class="chk-th">
+                <th>Name</th>
+                <th>Address</th>
+                <th>Email</th>
+                <th>Telp</th>
+                {% if user.is_superuser %}
+                <th>Action</th>
+                {% endif %}
+            </tr>
+        </thead>
+        {% for eo in eos %}
+        <tr>
+            <td>{{ eo.name }}</td>
+            <td>{{ eo.address }}</td>
+            <td>{{ eo.email }}</td>
+            <td>{{ eo.telp }}</td>
+            {% if user.is_superuser %}
+            <td>
+                <a class="btn btn-warning" href="/eventorganizer/{{eo.id}}"><i class="fas fa-pen"></i></a>
+                <a class="btn btn-danger" href="/delete_eventorganizer/{{eo.id}}"><i class="fas fa-trash"></i></a>
+            </td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+<span class="text-danger" id="no-data"></span>
+{% for message in messages %}
+{% endfor %}
+{% endblock content %}

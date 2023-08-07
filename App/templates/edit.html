@@ -1,0 +1,11 @@
+{%extends 'add.html' %}
+{% block active2 %} active {% endblock active2 %}
+{%block action%} action="/edit_eventorganizer" {%endblock action%}
+{%block btn-action%} <i class="fas fa-pencil"></i> Edit {%endblock btn-action%}
+{%block value-id%}
+<input type="text" name="id" value="{{ eo.id }}" readonly hidden>
+{%endblock value-id%}
+{%block value-name%} value="{{ eo.name }}" {%endblock value-name%}
+{%block value-address%} value="{{ eo.address }}" {%endblock value-address%}
+{%block value-email%} value="{{ eo.email }}" {%endblock value-email%}
+{%block value-telp%} value="{{ eo.telp }}" {%endblock value-telp%}

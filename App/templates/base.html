@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} Home {% endblock title %}</title>
+    {% load static %}
+    <link rel="shortcut icon" href="{% static 'img/ticket.ico'%}" type="image/x-icon">
+    <link rel="stylesheet" href={% static 'css/style.css' %}>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark d-none d-lg-block" style="z-index: 2000; background-color: grey;">
+        <div class="container-fluid">
+          <!-- Navbar brand -->
+          <a class="navbar-brand nav-link" href="/">
+            <strong>TicAT</strong>
+          </a>
+          <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarExample01"
+            aria-controls="navbarExample01" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarExample01">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item active">
+                <a class="nav-link {% block active1 %}{% endblock active1 %}" aria-current="page" href="/data_event">List Acara</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link {% block active2 %}{% endblock active2 %}" aria-current="page" href="/data_eo">List Event Organizer</a>
+              </li>
+            </ul>
+    
+            <ul class="navbar-nav list-inline">
+              <!-- Icons -->
+              <li class="">
+                <a class="nav-link active" href="https://www.instagram.com/oliverkore" rel="nofollow"
+                  target="_blank">
+                  <i class="fab fa-instagram"></i>
+                </a>
+              </li>
+              <li class="">
+                <a class="nav-link active" href="https://www.facebook.com/CLEOFACT" rel="nofollow" target="_blank">
+                  <i class="fab fa-facebook-f"></i>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="https://github.com/Oliv-e" rel="nofollow" target="_blank">
+                  <i class="fab fa-github"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    <div class="wrapper" style="height: 87.5vh;">
+        <!-- BLOCK CONTENT -->
+        {% block content %}{% endblock content %}
+    </div> 
+
+    <footer class="pt-2 pb-2 ps-3" style="background-color: rgb(88, 8, 149); color: white;">
+        Made with <i class="fas fa-heart"></i> and <i class="fas fa-coffee"></i> by Oliver Dillon
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/5f643e86a1.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script>
+        $("#cari").on("keyup", function() {
+            var value = $(this).val();
+            $("table tr").each(function(e) {
+                if (e !== 0) {
+                    $go = $(this)
+
+                    $go.find('td').each(function() {
+                        var id = $(this).text();
+
+                        if(id.indexOf(value) !== 0 && id.toLowerCase().indexOf(value.toLowerCase()) < 0) {
+                            $go.hide();
+                        }
+                        else {
+                            $go.show();
+                            return false;
+                        }
+                    });
+                }
+                var isNone = $("#myTable tr:not('.chk-th'):visible");
+                if(isNone.length == 0) {
+                    $("#no-data").text("No Data Found").show();
+                }
+                else {
+                    $("#no-data").text("No Data Found").hide();
+                }
+            })
+        });
+    </script>
+</body>
+</html>
