@@ -43,5 +43,6 @@ urlpatterns = [
     # Edit Data Event
     path('edit_event',views.edit_event, name="edit_event"),
     # Delete Data Event
-    path('delete_event/<str:event_id>',views.delete_event, name="delete_event")
+    path('delete_event/<str:event_id>',views.delete_event, name="delete_event"),
+    path('informasi',views.informasi, name="informasi")
 ]

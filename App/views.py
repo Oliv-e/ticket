@@ -101,3 +101,5 @@ def delete_event(request, event_id):
     event.delete()
     return HttpResponseRedirect('/data_event')
 
+def informasi(request):
+    return render(request, "informasi.html")

@@ -13,6 +13,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark d-none d-lg-block" style="z-index: 2000; background-color: grey;">
         <div class="container-fluid">
           <!-- Navbar brand -->
+          <img src="{% static 'img/ticket.png' %}" alt="" class="img-fluid" style="width: 30px;">
           <a class="navbar-brand nav-link" href="/">
             <strong>TicAT</strong>
           </a>
@@ -32,6 +33,9 @@
     
             <ul class="navbar-nav list-inline">
               <!-- Icons -->
+              <li>
+                <a class="nav-link active" href="">CONTACT US</a>
+              </li>
               <li class="">
                 <a class="nav-link active" href="https://www.instagram.com/oliverkore" rel="nofollow"
                   target="_blank">
@@ -52,7 +56,7 @@
           </div>
         </div>
       </nav>
-    <div class="wrapper" style="height: 87.5vh;">
+    <div class="wrapper" style="height: 87.8vh;">
         <!-- BLOCK CONTENT -->
         {% block content %}{% endblock content %}
     </div> 
